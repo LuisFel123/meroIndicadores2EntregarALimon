@@ -24,15 +24,16 @@
                         <f:validateDoubleRange minimum="40" maximum="100" />
                     </p:inputText>
 
-                    <p:outputLabel value="idPersona:" for="idPersona" />
-                    <p:inputText readonly="true" id="idPersona" value="#{aPersona.idP}" title="Cintura" required="true"/>
+                    <p:outputLabel value="Id persona:" for="idPersona" />
+                    <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.idPersona}" title="id persona" required="true"/>
+
 
                     <p:outputLabel value="Fecha:" for="fecha" />
                     <p:inputText readonly="true" id="fecha" value="#{aMedida.medida.fecha}" title="Fecha" required="true">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
 
-                    <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida()}"  update="messages :formulame :medidasT"  icon="pi pi-check" />
+                    <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" />
                 </h:panelGrid>
                 <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this"/>
             </h:form>

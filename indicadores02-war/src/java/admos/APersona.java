@@ -38,6 +38,7 @@ public class APersona implements Serializable {
     private boolean validacionRegistro;
     FacesMessage message;
     private int idP;
+ 
 
     public void autenticar() {
     }
@@ -191,7 +192,6 @@ public class APersona implements Serializable {
                     "El usuario ya existe",
                     null);
             FacesContext.getCurrentInstance().addMessage(null, message);
-
             FacesContext.getCurrentInstance().validationFailed();
 
         }
@@ -209,13 +209,18 @@ public class APersona implements Serializable {
                     "Bienvenido",
                     null);
             FacesContext.getCurrentInstance().addMessage(null, message);
-            System.out.println("el id de la persona es feliz feliz: "+ mDPersona.mandarPersonaId().getIdPersona());
-            setIdP(mDPersona.obtenerId());
-            medidas.setNumero(mDPersona.mandarPersonaId().getIdPersona());
             FacesContext.getCurrentInstance().validationFailed();
+            //
+            perosna=mDPersona.mandarPersonaId();
+            setPerosna(perosna);
+            // setIdP(mDPersona.obtenerId());
+            //medidas.setNumero(mDPersona.mandarPersonaId().getIdPersona());
+            
+            System.out.println("ID DE LA PERSONA DESDE Persona: "+perosna.getIdPersona());
             System.out.println("Usuario registrado jojojojo");
-            creaPersona();
+            //creaPersona();
 
+            //navegacion
             NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
             navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "medidas?faces-redirect=true");
 

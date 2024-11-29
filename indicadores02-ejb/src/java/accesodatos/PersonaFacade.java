@@ -46,6 +46,7 @@ public class PersonaFacade extends AbstractFacade<Persona> {
             persona = (Persona) consultaup.getSingleResult();
             setPersonam(persona);
             persona.setIdPersona(persona.getIdPersona());
+            
             System.out.println("El id de la persona es no no: "+persona.getIdPersona());
             setId(persona.getIdPersona());
             

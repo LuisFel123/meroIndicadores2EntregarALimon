@@ -14,6 +14,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import manipuladatos.MDMedida;
 import modelo.Medida;
+import modelo.Persona;
 
 /**
  *
@@ -38,6 +39,7 @@ public class AMedida implements Serializable {
     FacesMessage message;
 
     public int getNumero() {
+        medida.setIdMedida(numero);
         return numero;
     }
 
@@ -70,10 +72,13 @@ public class AMedida implements Serializable {
         return mDMedida.medidas();
 
     }
+    
+    
 
-    public void registroMedida() {
+    public void registroMedida(Persona idPersona) {
         medidas = getMedidas();
         try {
+            medida.setIdPersona(idPersona);
             mDMedida.registrarMedida(medida);
             medida = new Medida();
             System.out.println("Medida registrada correctamente");
