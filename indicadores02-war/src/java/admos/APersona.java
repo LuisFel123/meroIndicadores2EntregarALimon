@@ -4,6 +4,7 @@
  */
 package admos;
 
+import accesodatos.PersonaFacade;
 import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -179,7 +180,7 @@ public class APersona implements Serializable {
                 FacesContext.getCurrentInstance().addMessage(null, message);
 
                 FacesContext.getCurrentInstance().validationFailed();
-                System.out.println("Usuario registrado");
+                System.out.println("Usuario registrado jjeje");
                 creaPersona();
             }
         } else {
@@ -195,6 +196,7 @@ public class APersona implements Serializable {
     }
 
     public void autenticacion() {
+       
         System.out.println(perosna.getUsuario());
         System.out.println(perosna.getPassword());
         System.out.println(registradoLogin());
@@ -204,9 +206,9 @@ public class APersona implements Serializable {
                     "Bienvenido",
                     null);
             FacesContext.getCurrentInstance().addMessage(null, message);
-
+            System.out.println("el id de la persona es feliz feliz: "+ mDPersona.obtenerId());
             FacesContext.getCurrentInstance().validationFailed();
-            System.out.println("Usuario registrado");
+            System.out.println("Usuario registrado jojojojo");
             creaPersona();
 
             NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();

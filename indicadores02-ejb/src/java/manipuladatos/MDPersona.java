@@ -43,7 +43,12 @@ public class MDPersona {
     }
 
     public Persona personaUpLogin(Persona p) {
+
         return personaFacade.persona_usu_pas_login(p.getUsuario(), p.getPassword());
+    }
+
+    public int obtenerId() {
+       return personaFacade.getId();
     }
 
     public Persona personaUp(Persona p) {
