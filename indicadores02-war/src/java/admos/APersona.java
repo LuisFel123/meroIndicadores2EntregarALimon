@@ -37,6 +37,7 @@ public class APersona implements Serializable {
     //@ManagedProperty("#{buttonView}")  
     private boolean validacionRegistro;
     FacesMessage message;
+    private int idP;
 
     public void autenticar() {
     }
@@ -68,7 +69,8 @@ public class APersona implements Serializable {
     public void setPerosna(Persona perosna) {
         this.perosna = perosna;
     }
-
+    
+    
     public void registro() {
         calcularEdadDO(perosna);
         System.out.println(registrado());
@@ -201,12 +203,15 @@ public class APersona implements Serializable {
         System.out.println(perosna.getPassword());
         System.out.println(registradoLogin());
         if (!registradoLogin()) {
-
+            AMedida medidas = new AMedida();
+            
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Bienvenido",
                     null);
             FacesContext.getCurrentInstance().addMessage(null, message);
-            System.out.println("el id de la persona es feliz feliz: "+ mDPersona.obtenerId());
+            System.out.println("el id de la persona es feliz feliz: "+ mDPersona.mandarPersonaId().getIdPersona());
+            setIdP(mDPersona.obtenerId());
+            medidas.setNumero(mDPersona.mandarPersonaId().getIdPersona());
             FacesContext.getCurrentInstance().validationFailed();
             System.out.println("Usuario registrado jojojojo");
             creaPersona();
@@ -224,6 +229,14 @@ public class APersona implements Serializable {
             FacesContext.getCurrentInstance().validationFailed();
 
         }
+    }
+
+    public int getIdP() {
+        return idP;
+    }
+
+    public void setIdP(int idP) {
+        this.idP = idP;
     }
 
 }

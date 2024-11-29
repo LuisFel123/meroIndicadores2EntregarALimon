@@ -48,7 +48,12 @@ public class MDPersona {
     }
 
     public int obtenerId() {
-       return personaFacade.getId();
+        return personaFacade.getId();
+    }
+
+    public Persona mandarPersonaId() {
+            
+        return personaFacade.getPersonam();
     }
 
     public Persona personaUp(Persona p) {

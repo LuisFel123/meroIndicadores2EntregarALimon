@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import manipuladatos.MDMedida;
 import modelo.Medida;
 
@@ -26,12 +28,25 @@ public class AMedida implements Serializable {
      */
     @EJB
     private MDMedida mDMedida;
+    @Inject
+    private APersona aPersona; // Asegúrate de que aPersona esté correctamente inyectado
     private Medida medida;
     private List<Medida> medidas;
+    //quitar esto si no
+    private int numero = 0;
 
     FacesMessage message;
 
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+
     public AMedida() {
+        medida = new Medida();
     }
 
     public MDMedida getmDMedida() {
@@ -51,11 +66,26 @@ public class AMedida implements Serializable {
     }
 
     public List<Medida> getMedidas() {
-        return medidas;
+
+        return mDMedida.medidas();
+
     }
 
-    public void setMedidas(List<Medida> medidas) {
-        this.medidas = medidas;
+    public void registroMedida() {
+        medidas = getMedidas();
+        try {
+            mDMedida.registrarMedida(medida);
+            medida = new Medida();
+            System.out.println("Medida registrada correctamente");
+            message = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                        "Medida Registrada correctamente",
+                        null);
+                FacesContext.getCurrentInstance().addMessage(null, message);
+
+                FacesContext.getCurrentInstance().validationFailed();
+        } catch (Exception ex) {
+            System.err.println(ex);
+        }
     }
 
 }

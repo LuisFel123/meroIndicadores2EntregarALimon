@@ -54,6 +54,8 @@ public class Medida implements Serializable {
     private Persona idPersona;
 
     public Medida() {
+        this.fecha = new Date();
+
     }
 
     public Medida(Integer idMedida) {
@@ -124,5 +126,5 @@ public class Medida implements Serializable {
     public String toString() {
         return "modelo.Medida[ idMedida=" + idMedida + " ]";
     }
-    
+
 }
