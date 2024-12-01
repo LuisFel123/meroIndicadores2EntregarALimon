@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
+import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import manipuladatos.MDMedida;
@@ -79,14 +80,14 @@ public class AMedida implements Serializable {
     }
 
     public List<Medida> filtrarMedidasPorId() {
-        int i=0;
-        medidasFiltradas =new ArrayList<>();
+        int i = 0;
+        medidasFiltradas = new ArrayList<>();
         for (Medida medida : getMedidas()) {
             if (medida.getIdPersona().getIdPersona().equals(aPersona.getPerosna().getIdPersona())) {
                 medidasFiltradas.add(medida);
-                System.out.println("mostrando id medida: "+medida.getIdPersona());
-                i+=1;
-                System.out.println("Primera vez entrando "+i);
+                System.out.println("mostrando id medida: " + medida.getIdPersona());
+                i += 1;
+                System.out.println("Primera vez entrando " + i);
             } else {
                 System.out.println("La medida no pertenece al id actual");
             }
@@ -112,10 +113,12 @@ public class AMedida implements Serializable {
             System.err.println(ex);
         }
     }
-    
-    public void limpiar(){
-        medidasFiltradas= new ArrayList<>();
+
+    public void limpiar() {
+        medidasFiltradas = new ArrayList<>();
+        //navegacion
+        NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
+        navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "index?faces-redirect=true");
     }
-    
 
 }

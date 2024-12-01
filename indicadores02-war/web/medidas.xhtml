@@ -3,96 +3,104 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <f:view>
+            <div class="menu-banner">
+                <ui:include src="/menuA.xhtml" />
+            </div>
+            <div class="menu-banner">
+                <ui:include src="/menuI.xhtml" />
+            </div>
             <p:growl id="messages"/>
 
-            <h:form id="formulame">
-                <h1><h:outputText value="Create/Edit"/></h1>
-                <h:panelGrid columns="2">
-                    <p:outputLabel value="Peso:" for="peso" />
-                    <p:inputText id="peso" value="#{aMedida.medida.peso}" title="Peso" required="true" >
-                        <f:validateDoubleRange minimum="30.0" maximum="150.0" />
-                    </p:inputText>
+            <p:card style="width: 25rem; margin-bottom: 2em; margin-top: 1em; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 
-                    <p:outputLabel value="Cintura:" for="cintura" />
-                    <p:inputText id="cintura" value="#{aMedida.medida.cintura}" title="Cintura" required="true">
-                        <f:validateDoubleRange minimum="40.0" maximum="100.0" />
-                    </p:inputText>
-                    
-                    
-                     <p:outputLabel value="Cadera:" for="cadera" />
-                     <p:inputText id="cadera" value="#{aMedida.medida.cadera}" title="Cadera" required="true">
-                        <f:validateDoubleRange minimum="40.0" maximum="120.0" />
-                    </p:inputText>
+                <h:form id="formulame" style="margin-top: 2em;">
+                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Peso:" for="peso" />
+                        <p:inputText id="peso" value="#{aMedida.medida.peso}" title="Peso" required="true" >
+                            <f:validateDoubleRange minimum="30.0" maximum="150.0" />
+                        </p:inputText>
 
-                    <p:outputLabel value="Id persona:" for="idPersona" />
-                    <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.obtenerIdPersona(sessionScope['empleadoLogueado'].idPersona)}" title="id persona" required="true"/>
+                        <p:outputLabel value="Cintura:" for="cintura" />
+                        <p:inputText id="cintura" value="#{aMedida.medida.cintura}" title="Cintura" required="true">
+                            <f:validateDoubleRange minimum="40.0" maximum="100.0" />
+                        </p:inputText>
 
 
-                    <p:outputLabel value="Fecha:" for="fecha" />
-                    <p:inputText readonly="true" id="fecha" value="#{aMedida.medida.fecha}" title="Fecha" required="true">
-                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                    </p:inputText>
+                        <p:outputLabel value="Cadera:" for="cadera" />
+                        <p:inputText id="cadera" value="#{aMedida.medida.cadera}" title="Cadera" required="true">
+                            <f:validateDoubleRange minimum="40.0" maximum="120.0" />
+                        </p:inputText>
 
-                    <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" resetValues="true"/>
-                </h:panelGrid>
-                <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this" resetValues="true" actionListener="#{aMedida.limpiar()}"/>
-            </h:form>
+                        <p:outputLabel value="Id persona:" for="idPersona" />
+                        <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.obtenerIdPersona(sessionScope['empleadoLogueado'].idPersona)}" title="id persona" required="true"/>
 
 
-
-
-            <h:form id="medidasT">
-                <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{aMedida.filtrarMedidasPorId()}" var="item">
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="IdMedida"/>
-                        </f:facet>
-                        <h:outputText value="#{item.idMedida}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Peso"/>
-                        </f:facet>
-                        <h:outputText value="#{item.peso}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Cintura"/>
-                        </f:facet>
-                        <h:outputText value="#{item.cintura}"/>
-                    </h:column>
-                     <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Cadera"/>
-                        </f:facet>
-                        <h:outputText value="#{item.cadera}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Fecha"/>
-                        </f:facet>
-                        <h:outputText value="#{item.fecha}">
+                        <p:outputLabel value="Fecha:" for="fecha" />
+                        <p:inputText readonly="true" id="fecha" value="#{aMedida.medida.fecha}" title="Fecha" required="true">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
-                        </h:outputText>
-                    </h:column>
-                    <h:column>
+                        </p:inputText>
+
+                        <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" resetValues="true"/>
+                    </h:panelGrid>
+                </h:form>
+            </p:card>
+
+
+            <p:card style="margin-top: 30em;">
+                <h:form id="medidasT" >
+                    <p:dataTable value="#{aMedida.filtrarMedidasPorId()}" var="item">
                         <f:facet name="header">
-                            <h:outputText value="Id usuario"/>
+                            Registro de medidas                        
                         </f:facet>
-                        <h:outputText value="#{item.idPersona.idPersona}"/>
-                    </h:column>
-                </h:dataTable>
-            </h:form>
-
-
-
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="IdMedida"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMedida}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Peso"/>
+                            </f:facet>
+                            <h:outputText value="#{item.peso}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cintura"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cintura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Cadera"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cadera}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Id usuario"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPersona.idPersona}"/>
+                        </p:column>
+                    </p:dataTable>
+                </h:form>
+            </p:card>
 
         </f:view>
 
