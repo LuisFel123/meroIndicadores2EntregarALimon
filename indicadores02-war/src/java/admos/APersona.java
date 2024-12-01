@@ -19,6 +19,7 @@ import javax.faces.annotation.ManagedProperty;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.NavigationHandler;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 import manipuladatos.MDPersona;
 import modelo.Persona;
 
@@ -38,7 +39,6 @@ public class APersona implements Serializable {
     private boolean validacionRegistro;
     FacesMessage message;
     private int idP;
- 
 
     public void autenticar() {
     }
@@ -70,8 +70,7 @@ public class APersona implements Serializable {
     public void setPerosna(Persona perosna) {
         this.perosna = perosna;
     }
-    
-    
+
     public void registro() {
         calcularEdadDO(perosna);
         System.out.println(registrado());
@@ -198,27 +197,34 @@ public class APersona implements Serializable {
     }
 
     public void autenticacion() {
-       
+
         System.out.println(perosna.getUsuario());
         System.out.println(perosna.getPassword());
         System.out.println(registradoLogin());
         if (!registradoLogin()) {
             AMedida medidas = new AMedida();
-            
+
             message = new FacesMessage(FacesMessage.SEVERITY_INFO,
                     "Bienvenido",
                     null);
             FacesContext.getCurrentInstance().addMessage(null, message);
             FacesContext.getCurrentInstance().validationFailed();
             //
-            perosna=mDPersona.mandarPersonaId();
+            perosna = mDPersona.mandarPersonaId();
             setPerosna(perosna);
             // setIdP(mDPersona.obtenerId());
             //medidas.setNumero(mDPersona.mandarPersonaId().getIdPersona());
-            
-            System.out.println("ID DE LA PERSONA DESDE Persona: "+perosna.getIdPersona());
-            System.out.println("Usuario registrado jojojojo");
-            //creaPersona();
+
+            //guardar al empleado
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            HttpSession session = (HttpSession) facesContext.getExternalContext().getSession(true);
+            session.setAttribute("empleadoLogueado", perosna);
+            System.out.println("Empleado guardado en la sesión: " + perosna.getIdPersona());
+
+
+            //System.out.println("ID DE LA PERSONA DESDE Persona: " + perosna.getIdPersona());
+            //System.out.println("Usuario registrado jojojojo");
+            creaPersona();
 
             //navegacion
             NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();

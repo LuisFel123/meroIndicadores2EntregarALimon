@@ -26,8 +26,8 @@
                     <p:outputLabel value="Password:" for="password" />
                     <p:password id="password" value="#{aPersona.perosna.password}" title="Password" required="true" requiredMessage="La contrasea es requerida."/>
 
-                    <p:commandButton styleClass="ui-button-success" value="Ingresar" actionListener="#{aPersona.autenticacion()}"  update=":login messages"/>
-                    <p:commandButton style="margin-left: 6em" styleClass="ui-button-info" value="Registrate" action="registro_persona" process="@this"/>
+                    <p:commandButton styleClass="ui-button-success" value="Ingresar" actionListener="#{aPersona.autenticacion()}"  update=":login messages :medidasT" resetValues="true"/>
+                    <p:commandButton style="margin-left: 6em" styleClass="ui-button-info" value="Registrate" action="registro_persona" process="@this" resetValues="true"/>
 
 
                 </h:panelGrid>

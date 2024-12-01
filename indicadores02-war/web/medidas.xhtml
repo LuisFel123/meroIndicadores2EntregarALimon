@@ -25,7 +25,7 @@
                     </p:inputText>
 
                     <p:outputLabel value="Id persona:" for="idPersona" />
-                    <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.idPersona}" title="id persona" required="true"/>
+                    <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.obtenerIdPersona(sessionScope['empleadoLogueado'].idPersona)}" title="id persona" required="true"/>
 
 
                     <p:outputLabel value="Fecha:" for="fecha" />
@@ -33,9 +33,9 @@
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </p:inputText>
 
-                    <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" />
+                    <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" resetValues="true"/>
                 </h:panelGrid>
-                <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this"/>
+                <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this" resetValues="true" actionListener="#{aMedida.limpiar()}"/>
             </h:form>
 
 
@@ -43,7 +43,7 @@
 
             <h:form id="medidasT">
                 <h1><h:outputText value="List"/></h1>
-                <h:dataTable value="#{aMedida.medidas}" var="item">
+                <h:dataTable value="#{aMedida.filtrarMedidasPorId()}" var="item">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="IdMedida"/>
@@ -69,6 +69,12 @@
                         <h:outputText value="#{item.fecha}">
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id usuario"/>
+                        </f:facet>
+                         <h:outputText value="#{item.idPersona.idPersona}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

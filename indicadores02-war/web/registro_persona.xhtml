@@ -47,7 +47,7 @@
                         <p:inputText id="estatura" value="#{aPersona.perosna.estatura}"  required="true" title="Estatura" requiredMessage="La Estatura es requerida." >
                             <f:validateDoubleRange minimum="1.30" maximum="2.20" />
                         </p:inputText>
-                        <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aPersona.registroPersona()}"  process="@form" update="messages :formu :formuta" icon="pi pi-check" />
+                        <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aPersona.registroPersona()}"  process="@form" update="messages :formu :formuta" icon="pi pi-check" resetValues="true" />
                         <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this"/>
                     </h:panelGrid>
                 </h:form>

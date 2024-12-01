@@ -196,4 +196,9 @@ public class Persona implements Serializable {
         return "modelo.Persona[ idPersona=" + idPersona + " ]";
     }
 
+    public int obtenerIdPersona(int idP) {
+        this.idPersona = idP;
+        return idPersona;
+    }
+
 }
