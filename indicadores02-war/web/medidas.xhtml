@@ -16,12 +16,18 @@
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Peso:" for="peso" />
                     <p:inputText id="peso" value="#{aMedida.medida.peso}" title="Peso" required="true" >
-                        <f:validateDoubleRange minimum="30" maximum="130" />
+                        <f:validateDoubleRange minimum="30.0" maximum="150.0" />
                     </p:inputText>
 
                     <p:outputLabel value="Cintura:" for="cintura" />
                     <p:inputText id="cintura" value="#{aMedida.medida.cintura}" title="Cintura" required="true">
-                        <f:validateDoubleRange minimum="40" maximum="100" />
+                        <f:validateDoubleRange minimum="40.0" maximum="100.0" />
+                    </p:inputText>
+                    
+                    
+                     <p:outputLabel value="Cadera:" for="cadera" />
+                     <p:inputText id="cadera" value="#{aMedida.medida.cadera}" title="Cadera" required="true">
+                        <f:validateDoubleRange minimum="40.0" maximum="120.0" />
                     </p:inputText>
 
                     <p:outputLabel value="Id persona:" for="idPersona" />
@@ -62,6 +68,12 @@
                         </f:facet>
                         <h:outputText value="#{item.cintura}"/>
                     </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Cadera"/>
+                        </f:facet>
+                        <h:outputText value="#{item.cadera}"/>
+                    </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="Fecha"/>
@@ -70,11 +82,11 @@
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </h:outputText>
                     </h:column>
-                     <h:column>
+                    <h:column>
                         <f:facet name="header">
                             <h:outputText value="Id usuario"/>
                         </f:facet>
-                         <h:outputText value="#{item.idPersona.idPersona}"/>
+                        <h:outputText value="#{item.idPersona.idPersona}"/>
                     </h:column>
                 </h:dataTable>
             </h:form>

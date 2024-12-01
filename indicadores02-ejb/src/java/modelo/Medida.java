@@ -43,9 +43,11 @@ public class Medida implements Serializable {
     @Column(name = "id_medida")
     private Integer idMedida;
     @Column(name = "peso")
-    private Integer peso;
+    private double peso;
     @Column(name = "cintura")
-    private Integer cintura;
+    private double cintura;
+    @Column(name = "cadera")
+    private double cadera;
     @Column(name = "fecha")
     @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -70,19 +72,19 @@ public class Medida implements Serializable {
         this.idMedida = idMedida;
     }
 
-    public Integer getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(Integer peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
     }
 
-    public Integer getCintura() {
+    public double getCintura() {
         return cintura;
     }
 
-    public void setCintura(Integer cintura) {
+    public void setCintura(double cintura) {
         this.cintura = cintura;
     }
 
@@ -100,6 +102,14 @@ public class Medida implements Serializable {
 
     public void setIdPersona(Persona idPersona) {
         this.idPersona = idPersona;
+    }
+
+    public double getCadera() {
+        return cadera;
+    }
+
+    public void setCadera(double cadera) {
+        this.cadera = cadera;
     }
 
     @Override
