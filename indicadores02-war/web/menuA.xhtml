@@ -65,7 +65,7 @@
                             <i class="pi pi-fw pi-search" />
                             <p:inputText placeholder="Search"/>
                         </div>
-                        <p:commandButton value="Logout" icon="pi pi-fw pi-sign-out" styleClass="ui-button-info" actionListener="#{aMedida.limpiar()}"/>
+                        <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this" resetValues="true" actionListener="#{aMedida.limpiar()}"/>
                     </f:facet>
                 </p:menubar>
             </h:form>

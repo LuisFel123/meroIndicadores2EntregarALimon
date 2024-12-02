@@ -129,8 +129,8 @@ public class AMedida implements Serializable {
     public void limpiar() {
         medidasFiltradas = new ArrayList<>();
         //navegacion
-        NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
-        navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "index?faces-redirect=true");
+        //NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
+        //navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "index?faces-redirect=true");
     }
 
     public void calcularIMC() {

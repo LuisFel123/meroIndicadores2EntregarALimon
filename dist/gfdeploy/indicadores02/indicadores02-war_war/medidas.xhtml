@@ -12,12 +12,9 @@
         <f:view>
 
             <p:growl id="messages"/>
-            <div class="menu-banner">
-                <ui:include src="/menuI.xhtml" />
-            </div>
-            <p:card style="width: 25rem; margin-bottom: 2em; margin-top: 1em; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+            <p:card style="width: 25rem; margin-bottom: 1em; margin-top: 1em; text-align: center; position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%);">
 
-                <h:form id="formulame" style="margin-top: 2em;">
+                <h:form id="formulame">
                     <h1><h:outputText value="Registrar Medida"/></h1>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Peso:" for="peso" />
@@ -50,6 +47,8 @@
                         </p:inputText>
 
                         <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" />
+                        <p:commandButton  style="margin-top: 1em;" value="Regresar" action="index" styleClass="ui-button-warning" icon="pi pi-replay" process="@this" resetValues="true" actionListener="#{aMedida.limpiar()}"/>
+
                     </h:panelGrid>
                 </h:form>
             </p:card>
