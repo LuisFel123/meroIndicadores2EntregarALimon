@@ -20,13 +20,8 @@
         <h:form>
 
             <p:stack icon="/canasta.png" expanded="true">
-                <f:facet name="start">
-                    <!-- Aquí se puede usar un icono de PrimeIcons como un ícono del stack -->
-                    <p:button icon="pi pi-home" />
-                </f:facet>
-                <p:menuitem value="Registrar medidas" class="pi pi-book" style="font-size: 1rem"/>
-                <p:menuitem value="IMC y ISC" class="pi pi-trophy" style="font-size: 1rem"/>
-
+                <p:menuitem value="Registrar medidas" class="pi pi-book" style="font-size: 1rem" action="home" actionListener="#{aMedida.limpiarMedida()}"/>
+                <p:menuitem value="IMC y ISC" class="pi pi-trophy" style="font-size: 1rem" action="#{aMedida.calcularIMC()}"/>
             </p:stack>
         </h:form>
     </h:body>

@@ -102,7 +102,7 @@ public class APersona implements Serializable {
 
     public void eliminarPersona(Persona p) {
         System.out.println(p.toString());
-        message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
+        message = new FacesMessage(FacesMessage.SEVERITY_INFO,
                 "Eliminacion correcta del usuario",
                 null);
         FacesContext.getCurrentInstance().addMessage(null, message);
@@ -228,7 +228,7 @@ public class APersona implements Serializable {
 
             //navegacion
             NavigationHandler navigationHandler = FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
-            navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "medidas?faces-redirect=true");
+            navigationHandler.handleNavigation(FacesContext.getCurrentInstance(), null, "home?faces-redirect=true");
 
         } else {
             System.out.println("Usuario o contraseña incorrectos");
@@ -249,5 +249,7 @@ public class APersona implements Serializable {
     public void setIdP(int idP) {
         this.idP = idP;
     }
+    
+    
 
 }

@@ -200,5 +200,10 @@ public class Persona implements Serializable {
         this.idPersona = idP;
         return idPersona;
     }
+    
+    public double obtenerEsta(Double esta){
+        this.estatura=esta;
+        return estatura;
+    }
 
 }

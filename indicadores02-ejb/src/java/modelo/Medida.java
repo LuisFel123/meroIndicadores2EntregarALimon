@@ -112,6 +112,8 @@ public class Medida implements Serializable {
         this.cadera = cadera;
     }
 
+   
+
     @Override
     public int hashCode() {
         int hash = 0;

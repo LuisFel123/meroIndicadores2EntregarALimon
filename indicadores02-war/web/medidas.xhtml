@@ -10,18 +10,15 @@
     </h:head>
     <h:body>
         <f:view>
-            <div class="menu-banner">
-                <ui:include src="/menuA.xhtml" />
-            </div>
+
+            <p:growl id="messages"/>
             <div class="menu-banner">
                 <ui:include src="/menuI.xhtml" />
             </div>
-            <p:growl id="messages"/>
-
             <p:card style="width: 25rem; margin-bottom: 2em; margin-top: 1em; text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
 
                 <h:form id="formulame" style="margin-top: 2em;">
-                    <h1><h:outputText value="Create/Edit"/></h1>
+                    <h1><h:outputText value="Registrar Medida"/></h1>
                     <h:panelGrid columns="2">
                         <p:outputLabel value="Peso:" for="peso" />
                         <p:inputText id="peso" value="#{aMedida.medida.peso}" title="Peso" required="true" >
@@ -39,6 +36,10 @@
                             <f:validateDoubleRange minimum="40.0" maximum="120.0" />
                         </p:inputText>
 
+                        <p:outputLabel value="Estatura:" for="estatura" />
+                        <p:inputText readonly="true" id="estatura" value="#{aPersona.perosna.obtenerEsta(sessionScope['empleadoLogueado'].estatura)}" title="id persona" required="true"/>
+
+
                         <p:outputLabel value="Id persona:" for="idPersona" />
                         <p:inputText readonly="true" id="idPersona" value="#{aPersona.perosna.obtenerIdPersona(sessionScope['empleadoLogueado'].idPersona)}" title="id persona" required="true"/>
 
@@ -48,7 +49,7 @@
                             <f:convertDateTime pattern="MM/dd/yyyy" />
                         </p:inputText>
 
-                        <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" resetValues="true"/>
+                        <p:commandButton style="margin-top: 1em;" value="Registrar" actionListener="#{aMedida.registroMedida(aPersona.perosna)}"  update="messages :formulame :medidasT"  icon="pi pi-check" />
                     </h:panelGrid>
                 </h:form>
             </p:card>
