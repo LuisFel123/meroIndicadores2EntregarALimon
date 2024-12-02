@@ -27,7 +27,7 @@
                     <p:password id="password" value="#{aPersona.perosna.password}" title="Password" required="true" requiredMessage="La contrasea es requerida."/>
 
                     <p:commandButton styleClass="ui-button-success" value="Ingresar" actionListener="#{aPersona.autenticacion()}"  update=":login messages :medidasT" action="#{aMedida.limpiarMedida()}" resetValues="true"/>
-                    <p:commandButton style="margin-left: 6em" styleClass="ui-button-info" value="Registrate" action="registro_persona" process="@this" resetValues="true"/>
+                    <p:commandButton style="margin-left: 6em" styleClass="ui-button-info" value="Registrate" action="registro_persona" process="@this" resetValues="true" actionListener="#{aMedida.limpiarMedida()}"/>
 
 
                 </h:panelGrid>

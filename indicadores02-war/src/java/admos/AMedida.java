@@ -177,6 +177,7 @@ public class AMedida implements Serializable {
 
     public void limpiarMedida() {
         medida = new Medida();
+        aPersona.getPerosna().setEstatura(0.0);
     }
 
 }
